@@ -4,714 +4,1172 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Ц. Ариунзул 🎂</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<!-- Cyrillic-safe fonts: Cormorant Garamond (serif display, supports Cyrillic) + Montserrat (labels) + Roboto Mono (body) -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Montserrat:wght@400;600;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --pink: #F72585;
-    --hot-pink: #FF006E;
-    --deep-pink: #C9184A;
-    --cream: #FFF8F0;
-    --black: #0D0D0D;
-    --white: #FFFFFF;
-    --gray: #1A1A1A;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Space Mono', monospace;
-    background: var(--cream);
-    color: var(--black);
-    overflow-x: hidden;
-    max-width: 430px;
-    margin: 0 auto;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 430px;
-    background: var(--black);
-    display: flex;
-    z-index: 100;
-    border-top: 3px solid var(--pink);
-  }
-  nav a {
-    flex: 1;
-    color: #666;
-    text-decoration: none;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 1.5px;
-    padding: 14px 4px 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    transition: color 0.2s;
-  }
-  nav a .icon { font-size: 18px; }
-  nav a.active, nav a:hover { color: var(--pink); }
-
-  /* ─── PAGES ─── */
-  .page { display: none; min-height: 100vh; padding-bottom: 80px; }
-  .page.active { display: block; }
-
-  /* ─── LANDING ─── */
-  #page-home {
-    background: var(--pink);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .noise-overlay {
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .home-content { position: relative; z-index: 2; }
-
-  .torn-banner {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 10px 0;
-    text-align: center;
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 100%, 90% 80%, 85% 100%, 80% 80%, 75% 100%, 70% 80%, 65% 100%, 60% 80%, 55% 100%, 50% 80%, 45% 100%, 40% 80%, 35% 100%, 30% 80%, 25% 100%, 20% 80%, 15% 100%, 10% 80%, 5% 100%, 0 80%);
-    padding-bottom: 24px;
-  }
-
-  .home-hero {
-    padding: 24px 24px 0;
-  }
-
-  .invite-tag {
-    display: inline-block;
-    background: var(--white);
-    color: var(--black);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    padding: 6px 14px;
-    transform: rotate(-2deg);
-    margin-bottom: 16px;
-  }
-
-  .home-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 0.9;
-    letter-spacing: -2px;
-    margin-bottom: 4px;
-  }
-
-  .home-title .italic {
-    font-style: italic;
-    color: var(--black);
-    -webkit-text-stroke: 1px var(--black);
-  }
-
-  .home-sub {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 6px;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 24px;
-  }
-
-  .cutout-box {
-    background: var(--black);
-    color: var(--pink);
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-style: italic;
-    padding: 20px 24px;
-    margin: 0 -24px;
-    clip-path: polygon(0 8px, 8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
-  }
-
-  .cutout-box span {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    font-style: normal;
-    color: #666;
-    letter-spacing: 2px;
-    display: block;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    margin: 3px 0;
-    background: var(--black);
-  }
-
-  .info-cell {
-    background: var(--cream);
-    padding: 16px;
-    text-align: center;
-  }
-
-  .info-cell .label {
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #888;
-    margin-bottom: 6px;
-  }
-
-  .info-cell .value {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--black);
-  }
-
-  .info-cell.pink-cell { background: var(--black); }
-  .info-cell.pink-cell .label { color: var(--pink); }
-  .info-cell.pink-cell .value { color: var(--white); }
-
-  .rsvp-strip {
-    background: var(--pink);
-    padding: 28px 24px;
-    text-align: center;
-  }
-
-  .rsvp-text {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 15px;
-    letter-spacing: 4px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 8px;
-  }
-
-  .rsvp-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 900;
-    font-style: italic;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-
-  .rsvp-btn {
-    display: inline-block;
-    background: var(--black);
-    color: var(--pink);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 4px;
-    padding: 16px 40px;
-    text-decoration: none;
-    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-    cursor: pointer;
-    border: none;
-    transition: background 0.2s;
-  }
-
-  .editorial-row {
-    display: flex;
-    overflow: hidden;
-    white-space: nowrap;
-    background: var(--black);
-    padding: 10px 0;
-  }
-
-  .editorial-ticker {
-    display: inline-block;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14px;
-    letter-spacing: 4px;
-    color: var(--pink);
-    animation: ticker 12s linear infinite;
-    padding-right: 60px;
-  }
-
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ─── AGENDA ─── */
-  #page-agenda { background: var(--cream); }
-
-  .page-header {
-    background: var(--black);
-    padding: 60px 24px 32px;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    margin-bottom: -16px;
-  }
-
-  .page-header .eyebrow {
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--pink);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .page-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 0.95;
-  }
-
-  .page-header h1 em {
-    font-style: italic;
-    color: var(--pink);
-  }
-
-  .agenda-list {
-    padding: 32px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .agenda-item {
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    gap: 0;
-    position: relative;
-  }
-
-  .agenda-time-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4px;
-  }
-
-  .time-dot {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--pink);
-    border: 3px solid var(--cream);
-    box-shadow: 0 0 0 2px var(--pink);
-    flex-shrink: 0;
-  }
-
-  .time-line {
-    width: 2px;
-    flex: 1;
-    background: var(--pink);
-    opacity: 0.3;
-    min-height: 40px;
-  }
-
-  .agenda-item:last-child .time-line { display: none; }
-
-  .agenda-time {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 1px;
-    color: var(--black);
-    line-height: 1;
-    margin-bottom: 2px;
-    text-align: right;
-    padding-right: 18px;
-    padding-top: 0;
-    display: none;
-  }
-
-  .agenda-card {
-    background: var(--white);
-    border-left: 4px solid var(--pink);
-    padding: 14px 16px;
-    margin-bottom: 20px;
-    margin-left: 12px;
-  }
-
-  .agenda-card-time {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    color: var(--pink);
-    letter-spacing: 2px;
-    margin-bottom: 4px;
-  }
-
-  .agenda-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--black);
-    margin-bottom: 4px;
-  }
-
-  .agenda-card-desc {
-    font-size: 12px;
-    color: #666;
-    line-height: 1.5;
-    letter-spacing: 0.3px;
-  }
-
-  .agenda-emoji {
-    font-size: 20px;
-    margin-bottom: 6px;
-  }
-
-  /* ─── LOCATION ─── */
-  #page-location { background: var(--cream); }
-
-  .map-container {
-    position: relative;
-    height: 280px;
-    background: #e8e0d8;
-    overflow: hidden;
-  }
-
-  .map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .map-overlay-label {
-    position: absolute;
-    top: 16px; left: 16px;
-    background: var(--black);
-    color: var(--pink);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    padding: 6px 14px;
-    z-index: 2;
-  }
-
-  .location-info {
-    padding: 24px 20px;
-  }
-
-  .location-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--black);
-    margin-bottom: 4px;
-    line-height: 1.1;
-  }
-
-  .location-name em { font-style: italic; color: var(--pink); }
-
-  .location-address {
-    font-size: 12px;
-    color: #888;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-  }
-
-  .location-details {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
-  .loc-detail-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px dashed #ddd;
-  }
-
-  .loc-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .loc-detail-label {
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-bottom: 2px;
-  }
-
-  .loc-detail-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--black);
-  }
-
-  .gmaps-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: var(--black);
-    color: var(--white);
-    text-decoration: none;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16px;
-    letter-spacing: 4px;
-    padding: 18px;
-    width: 100%;
-    transition: background 0.2s;
-  }
-
-  .gmaps-btn:hover { background: var(--pink); }
-
-  .gmaps-btn .arrow {
-    font-size: 18px;
-  }
-
-  /* ─── TIMELINE ─── */
-  #page-timeline { background: var(--black); }
-
-  #page-timeline .page-header {
-    background: var(--pink);
-  }
-
-  #page-timeline .page-header .eyebrow { color: var(--black); }
-
-  .timeline-wrap {
-    padding: 32px 20px 20px;
-    position: relative;
-  }
-
-  .tl-line {
-    position: absolute;
-    left: 44px;
-    top: 32px;
-    bottom: 20px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--pink), transparent);
-    opacity: 0.4;
-  }
-
-  .tl-item {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 0;
-    margin-bottom: 28px;
-    align-items: start;
-  }
-
-  .tl-year-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 6px;
-  }
-
-  .tl-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--pink);
-    border: 3px solid var(--black);
-    box-shadow: 0 0 0 2px var(--pink);
-    flex-shrink: 0;
-  }
-
-  .tl-year {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: var(--pink);
-    margin-top: 6px;
-    text-align: center;
-  }
-
-  .tl-card {
-    background: #111;
-    border: 1px solid #222;
-    padding: 14px 16px;
-    margin-left: 12px;
-    position: relative;
-  }
-
-  .tl-card::before {
-    content: '';
-    position: absolute;
-    left: -8px;
-    top: 12px;
-    border: 4px solid transparent;
-    border-right-color: #111;
-  }
-
-  .tl-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 6px;
-  }
-
-  .tl-card-desc {
-    font-size: 11px;
-    color: #777;
-    line-height: 1.6;
-    letter-spacing: 0.3px;
-  }
-
-  .tl-tag {
-    display: inline-block;
-    background: var(--pink);
-    color: var(--white);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    padding: 3px 8px;
-    margin-bottom: 8px;
-  }
-
-  /* ─── WISHLIST ─── */
-  #page-wishlist { background: var(--cream); }
-
-  .wish-grid {
-    padding: 32px 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .wish-card {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 56px 1fr auto;
-    gap: 0;
-    align-items: stretch;
-    overflow: hidden;
-  }
-
-  .wish-num {
-    background: var(--black);
-    color: var(--pink);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .wish-body {
-    padding: 12px 14px;
-  }
-
-  .wish-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--black);
-    margin-bottom: 4px;
-  }
-
-  .wish-desc {
-    font-size: 11px;
-    color: #888;
-    line-height: 1.5;
-  }
-
-  .wish-emoji {
-    display: flex;
-    align-items: center;
-    padding: 0 14px;
-    font-size: 24px;
-    background: #f9f5f0;
-  }
-
-  .wish-priority {
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  .wish-priority.high { color: var(--pink); }
-  .wish-priority.med { color: #888; }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .page.active > * {
-    animation: fadeUp 0.4s ease forwards;
-  }
+:root {
+  --pink: #F472B6;
+  --hot-pink: #EC4899;
+  --deep-pink: #DB2777;
+  --blush: #FCE7F3;
+  --sky: #BAE6FD;
+  --sky-dark: #7DD3FC;
+  --sage: #6B7C5A;
+  --sage-light: #D1DCC4;
+  --cream: #FFFBF5;
+  --warm-white: #FFF8F0;
+  --black: #1A1008;
+  --dark: #2D1B0E;
+  --gray: #7C6A5A;
+  --light-gray: #E8DDD3;
+  --yellow: #FDE68A;
+  --yellow-warm: #F59E0B;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  background: var(--sage);
+  color: var(--black);
+  overflow-x: hidden;
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ─── OUTER FRAME (sage border like reference) ─── */
+.outer-frame {
+  background: var(--cream);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ─── BOTTOM NAV ─── */
+nav {
+  position: fixed;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  background: var(--warm-white);
+  display: flex;
+  z-index: 100;
+  border-top: 2px solid var(--pink);
+  box-shadow: 0 -4px 20px rgba(244, 114, 182, 0.15);
+}
+nav a {
+  flex: 1;
+  color: #B09080;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 4px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+nav a .icon { font-size: 16px; }
+nav a.active, nav a:hover { color: var(--deep-pink); }
+
+/* ─── PAGES ─── */
+.page { display: none; min-height: 100vh; padding-bottom: 80px; }
+.page.active { display: block; }
+
+/* ════════════════════════════════════
+   HOME PAGE — Magazine Editorial Collage
+════════════════════════════════════ */
+#page-home {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top nav bar like "BLOG UNIVERSITY" top nav */
+.mag-topbar {
+  background: var(--cream);
+  border-bottom: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+.mag-topbar .logo-text {
+  font-weight: 900;
+  font-size: 10px;
+  color: var(--black);
+  letter-spacing: 1px;
+}
+
+/* Big editorial masthead */
+.masthead {
+  background: linear-gradient(180deg, #C8DDE8 0%, #B8D4E8 40%, #A8CBE5 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 380px;
+  padding: 0;
+}
+
+.masthead-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 68px;
+  letter-spacing: -3px;
+  line-height: 0.88;
+  color: white;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  padding: 20px 18px 0;
+  position: relative;
+  z-index: 3;
+  mix-blend-mode: overlay;
+  opacity: 0.95;
+}
+
+.masthead-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.85);
+  padding: 8px 18px;
+  position: relative;
+  z-index: 3;
+  text-transform: uppercase;
+}
+
+/* Pink blob shape like the reference */
+.pink-blob {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  right: -20px;
+  height: 200px;
+  background: var(--pink);
+  border-radius: 60% 50% 40% 55% / 60% 40% 60% 40%;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.pink-blob-2 {
+  position: absolute;
+  top: 40px;
+  right: -40px;
+  width: 180px;
+  height: 160px;
+  background: var(--hot-pink);
+  border-radius: 50% 60% 40% 55% / 55% 45% 65% 45%;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* Badge card (like the ID card in reference) */
+.badge-card {
+  position: absolute;
+  top: 18px;
+  right: 14px;
+  width: 100px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px 8px;
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+  z-index: 10;
+  transform: rotate(6deg);
+  font-family: 'Montserrat', sans-serif;
+}
+.badge-card-top {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--gray);
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  color: var(--deep-pink);
+}
+.badge-photo {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--blush), var(--sky));
+  border-radius: 4px;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.badge-name {
+  font-size: 7px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--black);
+  letter-spacing: 0.5px;
+}
+.badge-date {
+  font-size: 6px;
+  color: var(--gray);
+  text-align: center;
+  margin-top: 2px;
+}
+.badge-lanyard {
+  width: 3px;
+  height: 20px;
+  background: var(--sky-dark);
+  margin: -2px auto 0;
+  border-radius: 2px;
+}
+
+/* Sticky note style text cards (from reference) */
+.sticky-note {
+  background: white;
+  padding: 10px 12px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 9px;
+  line-height: 1.5;
+  color: var(--dark);
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+  border-left: 3px solid var(--pink);
+  position: relative;
+}
+
+/* Main content area with editorial layout */
+.home-editorial {
+  position: relative;
+  z-index: 5;
+  padding: 20px 18px;
+  margin-top: -60px;
+}
+
+.editorial-headline-wrap {
+  background: var(--pink);
+  padding: 24px 18px;
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 98% 100%, 96% 88%, 93% 100%, 90% 88%, 87% 100%, 84% 88%, 81% 100%, 78% 88%, 75% 100%, 72% 88%, 69% 100%, 66% 88%, 63% 100%, 60% 88%, 57% 100%, 54% 88%, 51% 100%, 48% 88%, 45% 100%, 42% 88%, 39% 100%, 36% 88%, 33% 100%, 30% 88%, 27% 100%, 24% 88%, 21% 100%, 18% 88%, 15% 100%, 12% 88%, 9% 100%, 6% 88%, 3% 100%, 0 88%);
+  padding-bottom: 40px;
+}
+
+.headline-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.8);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.headline-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 700;
+  font-style: italic;
+  color: white;
+  line-height: 0.9;
+  margin-bottom: 8px;
+}
+
+.headline-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: -1px;
+  color: rgba(255,255,255,0.9);
+  text-transform: uppercase;
+}
+
+/* Sticky notes scattered */
+.notes-scatter {
+  padding: 28px 18px 0;
+  position: relative;
+}
+
+.note-card {
+  background: white;
+  border-radius: 2px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  box-shadow: 2px 3px 10px rgba(0,0,0,0.08);
+  position: relative;
+}
+.note-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--pink);
+  border-radius: 2px 2px 0 0;
+}
+.note-card.yellow-note::before { background: var(--yellow-warm); }
+.note-card.sky-note::before { background: var(--sky-dark); }
+
+.note-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #B09080;
+  margin-bottom: 4px;
+}
+.note-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+}
+.note-sub {
+  font-size: 9px;
+  color: var(--gray);
+  margin-top: 2px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.notes-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Countdown */
+.countdown-wrap {
+  background: var(--black);
+  padding: 20px 18px;
+  text-align: center;
+  margin: 0 -0px;
+}
+
+.countdown-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--pink);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cd-unit {
+  background: #2A1A10;
+  border: 1px solid #3A2A18;
+  padding: 10px 8px;
+  min-width: 60px;
+  text-align: center;
+  border-radius: 4px;
+}
+.cd-num {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--pink);
+  line-height: 1;
+  display: block;
+}
+.cd-lbl {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: #6A5A4A;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.bday-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--pink);
+  text-align: center;
+  padding: 20px 18px;
+  display: none;
+}
+
+/* Ticker tape */
+.ticker-wrap {
+  background: var(--deep-pink);
+  overflow: hidden;
+  padding: 9px 0;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 16s linear infinite;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: white;
+  text-transform: uppercase;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* RSVP quote section */
+.quote-section {
+  padding: 28px 18px;
+  background: var(--warm-white);
+  text-align: center;
+  position: relative;
+}
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  color: var(--blush);
+  line-height: 0.5;
+  display: block;
+  margin-bottom: 8px;
+}
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--dark);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+.quote-attr {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--pink);
+  text-transform: uppercase;
+}
+
+.invite-btn {
+  display: block;
+  background: var(--pink);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  margin-top: 18px;
+  transition: background 0.2s;
+}
+.invite-btn:hover { background: var(--deep-pink); }
+
+/* ════════════════════════════════════
+   PAGE HEADER — Shared style (scrapbook)
+════════════════════════════════════ */
+.page-header {
+  background: var(--sky);
+  padding: 52px 20px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 30px;
+  background: var(--cream);
+  clip-path: polygon(0 100%, 5% 0, 10% 100%, 15% 0, 20% 100%, 25% 0, 30% 100%, 35% 0, 40% 100%, 45% 0, 50% 100%, 55% 0, 60% 100%, 65% 0, 70% 100%, 75% 0, 80% 100%, 85% 0, 90% 100%, 95% 0, 100% 100%);
+}
+
+.page-header.pink-header { background: var(--pink); }
+.page-header.cream-header { background: var(--warm-white); border-bottom: 2px dashed var(--light-gray); }
+.page-header.dark-header { background: var(--black); }
+
+.page-header .eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: rgba(0,0,0,0.5);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.page-header.dark-header .eyebrow { color: var(--pink); }
+.page-header.pink-header .eyebrow { color: rgba(255,255,255,0.7); }
+
+.page-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 0.9;
+}
+.page-header.dark-header h1 { color: white; }
+.page-header.pink-header h1 { color: white; }
+
+.page-header h1 em {
+  font-style: italic;
+  color: white;
+}
+.page-header.dark-header h1 em { color: var(--pink); }
+.page-header.sky-header h1 em { color: var(--deep-pink); }
+
+/* ════════════════════════════════════
+   AGENDA PAGE
+════════════════════════════════════ */
+#page-agenda { background: var(--cream); }
+
+.agenda-list {
+  padding: 30px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.agenda-item {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0;
+  position: relative;
+}
+
+.agenda-time-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.time-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--pink);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--pink);
+  flex-shrink: 0;
+}
+
+.time-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--pink), var(--blush));
+  min-height: 40px;
+  opacity: 0.5;
+}
+.agenda-item:last-child .time-line { display: none; }
+
+.agenda-card {
+  background: white;
+  border-left: 3px solid var(--pink);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  margin-left: 10px;
+  border-radius: 0 6px 6px 0;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.15s;
+}
+.agenda-card:active { transform: scale(0.98); }
+
+.agenda-card-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--pink);
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.agenda-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+.agenda-card-desc {
+  font-size: 10px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+.agenda-emoji {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+/* ════════════════════════════════════
+   LOCATION PAGE
+════════════════════════════════════ */
+#page-location { background: var(--cream); }
+
+.map-container {
+  position: relative;
+  height: 260px;
+  background: #ddd;
+  overflow: hidden;
+}
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.map-overlay-label {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--pink);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 3px;
+  padding: 5px 12px;
+  z-index: 2;
+  border-radius: 20px;
+}
+
+.location-info { padding: 24px 18px; }
+
+.location-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+.location-name em { font-style: italic; color: var(--pink); }
+
+.location-address {
+  font-size: 10px;
+  color: #AAA;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.location-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 22px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.loc-detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--light-gray);
+}
+.loc-detail-row:last-child { border-bottom: none; }
+
+.loc-icon { font-size: 18px; flex-shrink: 0; }
+
+.loc-detail-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #BBB;
+  margin-bottom: 2px;
+}
+
+.loc-detail-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.gmaps-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--black);
+  color: white;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 18px;
+  width: 100%;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.gmaps-btn:hover { background: var(--deep-pink); }
+.gmaps-btn .arrow { font-size: 18px; }
+
+/* ════════════════════════════════════
+   TIMELINE PAGE
+════════════════════════════════════ */
+#page-timeline { background: var(--cream); }
+#page-timeline .page-header { background: var(--pink); }
+#page-timeline .page-header .eyebrow { color: rgba(255,255,255,0.7); }
+#page-timeline .page-header h1 { color: white; }
+#page-timeline .page-header h1 em { color: var(--black); }
+
+.timeline-wrap {
+  padding: 28px 18px 20px;
+  position: relative;
+}
+
+.tl-line {
+  position: absolute;
+  left: 38px;
+  top: 28px;
+  bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--pink), var(--blush));
+  opacity: 0.6;
+}
+
+.tl-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0;
+  margin-bottom: 22px;
+  align-items: start;
+}
+
+.tl-year-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.tl-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--pink);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--pink);
+  flex-shrink: 0;
+}
+
+.tl-year {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--pink);
+  margin-top: 5px;
+  text-align: center;
+}
+
+.tl-card {
+  background: white;
+  border-radius: 0 8px 8px 0;
+  border-left: 3px solid var(--blush);
+  padding: 12px 14px;
+  margin-left: 10px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.tl-card.featured { border-left-color: var(--pink); }
+
+.tl-tag {
+  display: inline-block;
+  background: var(--blush);
+  color: var(--deep-pink);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.tl-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 5px;
+}
+
+.tl-card-desc {
+  font-size: 10px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* Gallery section inside timeline */
+.gallery-section {
+  padding: 20px 18px;
+  background: var(--warm-white);
+}
+
+.gallery-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.gallery-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--blush);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.gallery-slot {
+  aspect-ratio: 1;
+  background: var(--blush);
+  border-radius: 4px;
+  border: 2px dashed var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.15s;
+}
+.gallery-slot:active { transform: scale(0.97); }
+.gallery-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.gallery-slot .plus-icon {
+  font-size: 24px;
+  color: var(--pink);
+  opacity: 0.6;
+}
+.gallery-slot.has-img img { display: block; }
+.gallery-slot.has-img .plus-icon { display: none; }
+
+#file-input { display: none; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 92%;
+  max-height: 85vh;
+  border-radius: 4px;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  background: var(--pink);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+/* ════════════════════════════════════
+   WISHLIST PAGE
+════════════════════════════════════ */
+#page-wishlist { background: var(--cream); }
+
+.wish-grid {
+  padding: 28px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wish-card {
+  background: white;
+  display: grid;
+  grid-template-columns: 48px 1fr 56px;
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.15s;
+}
+.wish-card:active { transform: scale(0.99); }
+
+.wish-num {
+  background: var(--blush);
+  color: var(--deep-pink);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wish-card.top-wish .wish-num {
+  background: var(--pink);
+  color: white;
+}
+
+.wish-body { padding: 12px 14px; }
+
+.wish-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 3px;
+}
+
+.wish-desc {
+  font-size: 10px;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.wish-priority {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  display: inline-block;
+}
+.wish-priority.high { color: var(--deep-pink); }
+.wish-priority.med { color: #B09080; }
+
+.wish-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  background: var(--warm-white);
+  border-left: 1px solid var(--light-gray);
+}
+
+.wish-closing {
+  background: var(--pink);
+  padding: 24px 18px;
+  text-align: center;
+  margin: 0 16px;
+  border-radius: 8px;
+}
+.wish-closing-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.wish-closing-attr {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page.active .page-header,
+.page.active .agenda-list,
+.page.active .agenda-item,
+.page.active .timeline-wrap,
+.page.active .wish-grid,
+.page.active .location-info,
+.page.active .home-editorial,
+.page.active .masthead {
+  animation: fadeUp 0.35s ease forwards;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+.time-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Scrapbook tape decorations */
+.tape {
+  display: inline-block;
+  background: rgba(252, 231, 243, 0.8);
+  padding: 4px 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 8px;
+  letter-spacing: 1px;
+  transform: rotate(-1.5deg);
+  position: relative;
+}
+.tape::before, .tape::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 8px;
+  background: rgba(252, 231, 243, 0.5);
+}
+.tape::before { left: -4px; transform: skewY(2deg); }
+.tape::after { right: -4px; transform: skewY(-2deg); }
+
+/* Decorative dots/stars */
+.decor-star {
+  display: inline-block;
+  color: var(--pink);
+}
 
 </style>
 </head>
 <body>
+<div class="outer-frame">
 
 <!-- ─── PAGE: HOME ─── -->
 <div id="page-home" class="page active">
-  <div class="noise-overlay"></div>
-  <div class="home-content">
-    <div class="torn-banner">✦ YOU ARE INVITED ✦ БУРХАН ЗАЯАСАН НАЙЗ ✦ YOU ARE INVITED ✦</div>
 
-    <div class="home-hero">
-      <div class="invite-tag">✦ BIRTHDAY INVITATION ✦</div>
-      <div class="home-title">
-        HAPPY<br>
-        <span class="italic">Birth</span><br>
-        DAY
-      </div>
-      <div class="home-sub">Ц · Ариунзул</div>
-    </div>
+  <!-- Magazine top nav bar -->
+  <div class="mag-topbar">
+    <span>🎀 BIRTHDAY</span>
+    <span class="logo-text">АРИУНЗУЛ</span>
+    <span>2025 ✦</span>
+  </div>
 
-    <div class="cutout-box">
-      "Хамгийн гайхалтай найзынхаа <br>онцгой өдөр"
-      <span>✦ SPECIAL CELEBRATION ✦</span>
-    </div>
-
-    <div class="info-grid">
-      <div class="info-cell">
-        <div class="label">Огноо</div>
-        <div class="value" style="font-size:16px;">2025.06.15</div>
-      </div>
-      <div class="info-cell pink-cell">
-        <div class="label">Цаг</div>
-        <div class="value">18:00</div>
-      </div>
-      <div class="info-cell pink-cell">
-        <div class="label">Хаана</div>
-        <div class="value" style="font-size:13px;">Ulaanbaatar</div>
-      </div>
-      <div class="info-cell">
-        <div class="label">Dress Code</div>
-        <div class="value" style="font-size:12px;">Elegant</div>
+  <!-- Hero masthead with sky-blue editorial background -->
+  <div class="masthead">
+    <!-- Badge card like the ID card in reference -->
+    <div style="position:absolute; top:0; right:0; z-index:10; padding:14px 14px 0 0;">
+      <div class="badge-lanyard" style="margin:0 auto 0;"></div>
+      <div class="badge-card">
+        <div class="badge-card-top">YOU ARE<br>INVITED ♥</div>
+        <div class="badge-photo">🌸</div>
+        <div class="badge-name">Ц. АРИУНЗУЛ</div>
+        <div class="badge-date">May 11 · 2025</div>
       </div>
     </div>
 
-    <div class="editorial-row">
-      <span class="editorial-ticker">
-        ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ JUNE 2025 ✦ ULAANBAATAR ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ JUNE 2025 ✦ ULAANBAATAR ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ JUNE 2025 ✦ ULAANBAATAR ✦
-      </span>
-    </div>
+    <div class="pink-blob-2"></div>
+    <div class="masthead-title">HAPPY<br>BIRTH<br>DAY</div>
+    <div class="masthead-sub">✦ BIRTHDAY UNIVERSITY ✦ CLASS OF 2025</div>
+    <div class="pink-blob"></div>
+  </div>
 
-    <div class="rsvp-strip">
-      <div class="rsvp-text">✦ CELEBRATING ✦</div>
-      <div class="rsvp-name">Ц. Ариунзул</div>
-      <div style="font-size:12px; color: rgba(255,255,255,0.6); margin-bottom:20px; font-family:'Space Mono',monospace;">
-        Доорх хуудаснуудаас дэлгэрэнгүй мэдээллийг авна уу
+  <!-- Editorial headline on pink torn paper -->
+  <div class="editorial-headline-wrap">
+    <div class="headline-eyebrow">✦ SPECIAL CELEBRATION ✦</div>
+    <div class="headline-main">Онцгой<br>өдөр</div>
+    <div class="headline-name">Ц · Ариунзул</div>
+  </div>
+
+  <!-- Info notes scattered like scrapbook -->
+  <div class="notes-scatter">
+    <div class="notes-row">
+      <div class="note-card">
+        <div class="note-label">Огноо</div>
+        <div class="note-value">May 11</div>
+        <div class="note-sub">2025 · UTC+8</div>
       </div>
-      <button class="rsvp-btn" onclick="showPage('agenda')">AGENDA ХАРАХ →</button>
+      <div class="note-card yellow-note">
+        <div class="note-label">Цаг</div>
+        <div class="note-value">18:00</div>
+        <div class="note-sub">Орой</div>
+      </div>
+    </div>
+    <div class="notes-row">
+      <div class="note-card sky-note">
+        <div class="note-label">Хаана</div>
+        <div class="note-value" style="font-size:16px;">Улаанбаатар</div>
+        <div class="note-sub">City Center</div>
+      </div>
+      <div class="note-card">
+        <div class="note-label">Dress Code</div>
+        <div class="note-value" style="font-size:16px;">Elegant</div>
+        <div class="note-sub">Pink is welcome ♥</div>
+      </div>
     </div>
   </div>
+
+  <!-- Countdown -->
+  <div class="countdown-wrap">
+    <div class="countdown-label">✦ Төрсөн өдөр хүртэл ✦</div>
+    <div class="countdown-grid" id="countdown-display">
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-days">--</span>
+        <div class="cd-lbl">Өдөр</div>
+      </div>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-hours">--</span>
+        <div class="cd-lbl">Цаг</div>
+      </div>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-mins">--</span>
+        <div class="cd-lbl">Минут</div>
+      </div>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-secs">--</span>
+        <div class="cd-lbl">Секунд</div>
+      </div>
+    </div>
+    <div class="bday-msg" id="bday-msg">🎂 Төрсөн өдөр нь ирлээ!</div>
+  </div>
+
+  <!-- Scrolling ticker -->
+  <div class="ticker-wrap">
+    <span class="ticker-inner">
+      ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ MAY 2025 ✦ ULAANBAATAR ✦ HAPPY BIRTHDAY ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ MAY 2025 ✦ ULAANBAATAR ✦ HAPPY BIRTHDAY ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ MAY 2025 ✦ ULAANBAATAR ✦ HAPPY BIRTHDAY ✦ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ MAY 2025 ✦ ULAANBAATAR ✦ HAPPY BIRTHDAY ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ MAY 2025 ✦ ULAANBAATAR ✦ HAPPY BIRTHDAY ✦ АРИУНЗУЛ ✦ BIRTHDAY QUEEN ✦ MAY 2025 ✦ ULAANBAATAR ✦ HAPPY BIRTHDAY ✦
+    </span>
+  </div>
+
+  <!-- Quote / RSVP -->
+  <div class="quote-section">
+    <span class="quote-mark">"</span>
+    <div class="quote-text">Хамгийн гайхалтай найзынхаа онцгой өдөр</div>
+    <div class="quote-attr">✦ Special Celebration ✦</div>
+    <button class="invite-btn" onclick="showPage('agenda')">ХӨТӨЛБӨР ХАРАХ →</button>
+  </div>
+
 </div>
 
 <!-- ─── PAGE: AGENDA ─── -->
@@ -722,12 +1180,8 @@
   </div>
 
   <div class="agenda-list">
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">🚪</div>
         <div class="agenda-card-time">17:30</div>
@@ -735,12 +1189,8 @@
         <div class="agenda-card-desc">Нийт зочид ирж бүртгүүлнэ. Welcome drinks, зураг авах зай бэлэн байна.</div>
       </div>
     </div>
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">🎂</div>
         <div class="agenda-card-time">18:00</div>
@@ -748,12 +1198,8 @@
         <div class="agenda-card-desc">Торт хайчлах, мэндчилгээ хэлэх, хамтдаа тэмдэглэх хэсэг.</div>
       </div>
     </div>
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">🍽️</div>
         <div class="agenda-card-time">18:30</div>
@@ -761,12 +1207,8 @@
         <div class="agenda-card-desc">Оройн хоол. Гурманы хоол, коктейль, хөдөөх мэдрэмж.</div>
       </div>
     </div>
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">🎁</div>
         <div class="agenda-card-time">19:30</div>
@@ -774,12 +1216,8 @@
         <div class="agenda-card-desc">Ариунзул бэлгийг нэг бүрчлэн нээх цаг. Гэрэл зурагт баригдах мөч!</div>
       </div>
     </div>
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">💃</div>
         <div class="agenda-card-time">20:00</div>
@@ -787,12 +1225,8 @@
         <div class="agenda-card-desc">Тайзан дээр гарж бүжиглэх, хамтдаа дуулах, шөнийг баяр хөөртэйгөөр өнгөрүүлэх.</div>
       </div>
     </div>
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">📸</div>
         <div class="agenda-card-time">21:30</div>
@@ -800,12 +1234,8 @@
         <div class="agenda-card-desc">Хамтдаа зураг авхуулах, дурсамжаа хадгалах. Props бэлэн байна!</div>
       </div>
     </div>
-
     <div class="agenda-item">
-      <div class="agenda-time-col">
-        <div class="time-dot"></div>
-        <div class="time-line"></div>
-      </div>
+      <div class="agenda-time-col"><div class="time-dot"></div><div class="time-line"></div></div>
       <div class="agenda-card">
         <div class="agenda-emoji">🌙</div>
         <div class="agenda-card-time">22:00</div>
@@ -813,7 +1243,6 @@
         <div class="agenda-card-desc">Гайхалтай шөнийн төгсгөл. Goodie bag авч гэртээ харина уу. ♥</div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -826,7 +1255,6 @@
 
   <div class="map-container">
     <div class="map-overlay-label">✦ VENUE</div>
-    <!-- Google Maps embed for Ulaanbaatar city center -->
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d85249.75823699808!2d106.83563!3d47.90771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d96926ba0d748e3%3A0xb80b6b8e04aee0ab!2sUlaanbaatar!5e0!3m2!1sen!2smn!4v1700000000000!5m2!1sen!2smn"
       allowfullscreen=""
@@ -878,101 +1306,93 @@
   </div>
 </div>
 
-<!-- ─── PAGE: TIMELINE ─── -->
+<!-- ─── PAGE: TIMELINE / АМЬДРАЛ ─── -->
 <div id="page-timeline" class="page">
-  <div class="page-header" style="background:var(--pink);">
-    <div class="eyebrow" style="color:var(--black);">✦ HER STORY ✦</div>
-    <h1 style="color:var(--black);">Амьд<br><em style="color:var(--white);">рал</em></h1>
+  <div class="page-header pink-header">
+    <div class="eyebrow">✦ HER STORY ✦</div>
+    <h1>Амьд<br><em>рал</em></h1>
   </div>
 
   <div class="timeline-wrap">
     <div class="tl-line"></div>
 
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2000</div>
-      </div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2000</div></div>
       <div class="tl-card">
         <div class="tl-tag">✦ ТӨРСӨН</div>
         <div class="tl-card-title">🌸 Дэлхийд мэнд ирэв</div>
         <div class="tl-card-desc">Гэр бүлийн хамгийн гялалзсан одон мэнд боллоо. Аав ээж нь хамгийн аз жаргалтай өдрөө тэмдэглэсэн.</div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2006</div>
-      </div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2006</div></div>
       <div class="tl-card">
         <div class="tl-tag">✦ СУРГУУЛЬ</div>
         <div class="tl-card-title">📚 Сургуульд орлоо</div>
         <div class="tl-card-desc">Анхны ангийн өдрөөс эхлэн хамгийн идэвхтэй, ухаалаг сурагчдын нэг болсон.</div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2012</div>
-      </div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2012</div></div>
       <div class="tl-card">
         <div class="tl-tag">✦ ХОББИ</div>
         <div class="tl-card-title">🎨 Урлагт дуртай болов</div>
         <div class="tl-card-desc">Уран зурлага, хөгжим, дизайнд татагдаж эхэлсэн. Бүтээлч сэтгэлгээ цэцэглэж байв.</div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2017</div>
-      </div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2017</div></div>
       <div class="tl-card">
         <div class="tl-tag">✦ ЯЛАЛТ</div>
         <div class="tl-card-title">🏆 Анхны ялалт</div>
         <div class="tl-card-desc">Олимпиад, уралдаанд оролцон тэргүүлж, хамгийн чадварлаг залуу хэмээн хүлээн зөвшөөрөгдсөн.</div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2019</div>
-      </div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2019</div></div>
       <div class="tl-card">
         <div class="tl-tag">✦ НАЙЗУУД</div>
         <div class="tl-card-title">👯 Хамгийн сайн найзуудтай болов</div>
         <div class="tl-card-desc">Энэ өдөр тэмдэглэж буй бид нар түүний амьдралд гэрэл болж орж ирлээ! ♥</div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2022</div>
-      </div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2022</div></div>
       <div class="tl-card">
         <div class="tl-tag">✦ ИХ СУРГУУЛЬ</div>
         <div class="tl-card-title">🎓 Их сургуульд орлоо</div>
         <div class="tl-card-desc">Мөрөөдлийн тэнхимдээ орж, ирээдүйгээ бүтээж эхэллээ. Нэр хүнд, эрч хүч дүүрэн.</div>
       </div>
     </div>
-
     <div class="tl-item">
-      <div class="tl-year-col">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2025</div>
-      </div>
-      <div class="tl-card" style="border:2px solid var(--pink);">
-        <div class="tl-tag">✦ ӨНӨӨДӨР</div>
+      <div class="tl-year-col"><div class="tl-dot"></div><div class="tl-year">2025</div></div>
+      <div class="tl-card featured">
+        <div class="tl-tag" style="background:var(--pink); color:white;">✦ ӨНӨӨДӨР</div>
         <div class="tl-card-title">🎂 Тэмдэглэх өдөр!</div>
         <div class="tl-card-desc">Хамгийн гоё найзынхаа төрсөн өдрийг тэмдэглэж байна. Зуун жил амьдар, Ариунзул! ✦</div>
       </div>
     </div>
-
   </div>
+
+  <!-- Photo Gallery -->
+  <div class="gallery-section">
+    <div class="gallery-label">✦ Зургийн цомог</div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="gallery-slot" onclick="triggerUpload(0)"><span class="plus-icon">+</span></div>
+      <div class="gallery-slot" onclick="triggerUpload(1)"><span class="plus-icon">+</span></div>
+      <div class="gallery-slot" onclick="triggerUpload(2)"><span class="plus-icon">+</span></div>
+      <div class="gallery-slot" onclick="triggerUpload(3)"><span class="plus-icon">+</span></div>
+      <div class="gallery-slot" onclick="triggerUpload(4)"><span class="plus-icon">+</span></div>
+      <div class="gallery-slot" onclick="triggerUpload(5)"><span class="plus-icon">+</span></div>
+    </div>
+    <input type="file" id="file-input" accept="image/*">
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">✕</div>
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <!-- ─── PAGE: WISHLIST ─── -->
@@ -984,7 +1404,7 @@
 
   <div class="wish-grid">
 
-    <div class="wish-card">
+    <div class="wish-card top-wish">
       <div class="wish-num">01</div>
       <div class="wish-body">
         <div class="wish-title">Үнэртэй ус</div>
@@ -994,7 +1414,7 @@
       <div class="wish-emoji">🌹</div>
     </div>
 
-    <div class="wish-card">
+    <div class="wish-card top-wish">
       <div class="wish-num">02</div>
       <div class="wish-body">
         <div class="wish-title">Арьс арчлах багц</div>
@@ -1034,7 +1454,7 @@
       <div class="wish-emoji">💇</div>
     </div>
 
-    <div class="wish-card">
+    <div class="wish-card top-wish">
       <div class="wish-num">06</div>
       <div class="wish-body">
         <div class="wish-title">Гоёлын зүйл</div>
@@ -1054,9 +1474,9 @@
       <div class="wish-emoji">✈️</div>
     </div>
 
-    <div style="background: var(--black); padding: 20px; text-align: center;">
-      <div style="font-family:'Playfair Display',serif; font-size:22px; font-style:italic; color:var(--white); margin-bottom:8px;">"Хамгийн сайхан бэлэг бол таны ирсэн нь!"</div>
-      <div style="font-size:10px; letter-spacing:3px; color:var(--pink);">✦ АРИУНЗУЛ ✦</div>
+    <div class="wish-closing">
+      <div class="wish-closing-quote">"Хамгийн сайхан бэлэг бол таны ирсэн нь!"</div>
+      <div class="wish-closing-attr">✦ Ариунзул ✦</div>
     </div>
 
   </div>
@@ -1064,29 +1484,32 @@
 
 <!-- ─── BOTTOM NAV ─── -->
 <nav>
-  <a href="#" class="active" id="nav-home" onclick="showPage('home')">
+  <a href="#" class="active" id="nav-home" onclick="return showPage('home')">
     <span class="icon">🎀</span>
     Урилга
   </a>
-  <a href="#" id="nav-agenda" onclick="showPage('agenda')">
+  <a href="#" id="nav-agenda" onclick="return showPage('agenda')">
     <span class="icon">📋</span>
     Хөтөлбөр
   </a>
-  <a href="#" id="nav-location" onclick="showPage('location')">
+  <a href="#" id="nav-location" onclick="return showPage('location')">
     <span class="icon">📍</span>
     Байршил
   </a>
-  <a href="#" id="nav-timeline" onclick="showPage('timeline')">
+  <a href="#" id="nav-timeline" onclick="return showPage('timeline')">
     <span class="icon">⭐</span>
     Амьдрал
   </a>
-  <a href="#" id="nav-wishlist" onclick="showPage('wishlist')">
+  <a href="#" id="nav-wishlist" onclick="return showPage('wishlist')">
     <span class="icon">🎁</span>
     Бэлэг
   </a>
 </nav>
 
+</div><!-- /outer-frame -->
+
 <script>
+// ─── PAGE NAVIGATION ───
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
@@ -1094,6 +1517,73 @@ function showPage(name) {
   document.getElementById('nav-' + name).classList.add('active');
   window.scrollTo(0, 0);
   return false;
+}
+
+// ─── COUNTDOWN (UTC+8, 2025-05-11 00:00) ───
+function updateCountdown() {
+  const target = new Date('2025-05-11T00:00:00+08:00');
+  const now = new Date();
+  const diff = target - now;
+
+  const display = document.getElementById('countdown-display');
+  const msg = document.getElementById('bday-msg');
+
+  if (diff <= 0) {
+    display.style.display = 'none';
+    msg.style.display = 'block';
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ─── GALLERY UPLOAD ───
+let currentSlot = null;
+const galleryImages = {};
+
+function triggerUpload(slotIndex) {
+  currentSlot = slotIndex;
+  const fileInput = document.getElementById('file-input');
+  fileInput.onchange = function(e) {
+    if (!e.target.files[0]) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      galleryImages[currentSlot] = ev.target.result;
+      const slots = document.querySelectorAll('.gallery-slot');
+      const slot = slots[currentSlot];
+      let img = slot.querySelector('img');
+      if (!img) {
+        img = document.createElement('img');
+        slot.appendChild(img);
+      }
+      img.src = ev.target.result;
+      slot.classList.add('has-img');
+      // Click to open lightbox after upload
+      slot.onclick = () => openLightbox(ev.target.result);
+    };
+    reader.readAsDataURL(e.target.files[0]);
+    fileInput.value = '';
+  };
+  fileInput.click();
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
 }
 </script>
 </body>
